@@ -16,11 +16,12 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/', Home::class)->name('home');
+    Route::get('/home', Home::class)->name('home');
+    Route::get('/modal', Home::class)->name('modal');
+
 });
 
 //Para admins
-
 Route::get('index', function () {
     return view('proyecto.index');
-})->middleware(isAdmin::class);
+})->middleware(isAdmin::class)->name('index');
