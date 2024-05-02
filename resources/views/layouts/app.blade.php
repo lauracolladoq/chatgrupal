@@ -11,8 +11,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
     <!-- CDN SWEETALERT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -56,16 +57,25 @@
             <!-- ------------------------------------------- Inicio Sección Izquierda ------------------------------------------- -->
             <div class="main-left">
                 <!-- -------------------- Perfil -------------------- -->
-                <a href="" class="profile">
-                    <div class="profile-picture" id="my-profile-picture">
-                        <img src="Assets/images/img/f1.jpg" alt="" />
-                    </div>
-                    <div class="profile-handle">
-                        <h4>Beg Joker</h4>
-                        <p class="text-gry">@thebegjoker</p>
-                    </div>
-                </a>
+                @auth
+                    <a href="" class="profile">
+                        <div class="profile-picture" id="my-profile-picture">
+                            <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="" />
+                        </div>
+                        <div class="profile-handle">
+                            <h4>{{ auth()->user()->name }}</h4>
+                            <p class="text-gry"><span>@</span>{{ auth()->user()->username }}</p>
+                        </div>
+                    </a>
+                @endauth
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}" x-data>
+                    @csrf
 
+                    <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                        {{ __('Log Out') }}
+                    </x-dropdown-link>
+                </form>
                 <!-- ------------------------------------------- Inicio Aside ------------------------------------------- -->
                 <aside>
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')"

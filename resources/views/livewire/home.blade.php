@@ -30,15 +30,16 @@
                         </div>
 
                         <div class="liked-by">
-                            <span><img src="Assets/images/img/n2.png" alt="" /></span>
-                            <span><img src="Assets/images/img/n2.png" alt="" /></span>
+                            <span><img src="{{ Storage::url($post->usersLikes()->inRandomOrder()->value('avatar')) }}" alt="" /></span>
+                            <span><img src="{{ Storage::url($post->usersLikes()->inRandomOrder()->value('avatar')) }}" alt="" /></span>
                             <p>Liked By <b>{{ $post->usersLikes()->inRandomOrder()->value('name') }} </b> and
-                                <b>{{ $post->usersLikes->count() }}</b> others</p>
+                                <b>{{ $post->usersLikes->count()-1 }}</b> others</p>
                         </div>
                         <div class="caption">
                             <p>
                                 <b>{{ $post->user->name }}</b>{{ $post->contenido }}
                                 <span class="hars-tag">#prueba</span>
+                                @endforeach
                             </p>
                         </div>
                         <div class="comments text-gry">View all comments</div>

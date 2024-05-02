@@ -16,7 +16,6 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-    Route::get('/home', Home::class)->name('home');
     Route::get('/modal', Home::class)->name('modal');
 
 });
@@ -25,3 +24,5 @@ Route::middleware([
 Route::get('index', function () {
     return view('proyecto.index');
 })->middleware(isAdmin::class)->name('index');
+  
+Route::get('/home', Home::class)->name('home');
