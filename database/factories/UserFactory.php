@@ -29,6 +29,7 @@ class UserFactory extends Factory
         fake()->addProvider(new \Mmo\Faker\PicsumProvider(fake()));
         return [
             'name' => fake()->name(),
+            'username' => fake()->unique()->word(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
@@ -37,7 +38,7 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             //'profile_photo_path' => null,
             'current_team_id' => null,
-            'avatar' => fake()->picsum('public/storage/users-avatar', 300, 300, false)
+            'avatar' => 'users-avatar/'.fake()->picsum('public/storage/users-avatar', 300, 300, false)
         ];
     }
 

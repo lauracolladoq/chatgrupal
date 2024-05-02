@@ -1,11 +1,11 @@
+/*
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 [x-cloak] {
     display: none;
-}
-
+} */
 /* --------------- Reseteo de propiedades --------------- */
 *,
 *::before,
@@ -47,7 +47,7 @@
 
 /* --------------- Estilos generales --------------- */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: var(--color-dark);
   background: var(--color-light);
 }

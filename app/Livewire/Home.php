@@ -11,12 +11,18 @@ class Home extends Component
 {
     public function render()
     {
-        $posts = Post::select('post.id as id_post', 'user_id', 'imagen', 'contenido')
-            ->join('tags', 'tags.id', '=', 'tag_id');
+        //$posts = Post::select('user_id', 'imagen', 'contenido')->get();
+        $posts = Post::select('id', 'user_id', 'imagen', 'contenido', 'created_at')
+        ->with('user') 
+        ->orderBy('id')
+        ->take(5)
+        ->get();
+    
+        
 
         $tags = Tag::select('id', 'nombre', 'color')->orderBy('nombre')->get();
 
-        $users = User::select('id', 'name', 'email', 'avatar');
+        $users = User::select('id', 'name', 'email', 'avatar')->get();
 
         $misLikes = Post::whereHas('usersLikes', function ($q) {
             $q->where('user_id', auth()->user()->id);

@@ -1,22 +1,18 @@
 <div>
-    <x-dialog-modal wire:model="openModal">
-        <x-slot name="title">
-            Detalle producto
-        </x-slot>
-
-        <x-slot name="content">
-            <div>
-                Hola
-            </div>
-        </x-slot>
-
-        <x-slot name="footer">
-            <div class="flex flex-row-reverse">
-                <button wire:click="cancelarS"
-                    class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-                    <i class="fas fa-arrow-left mr-2"></i>Volver
-                </button>
-            </div>
-        </x-slot>
-    </x-dialog-modal>
+    <a href="#" class="menu-item" wire:click.prevent="openModal">
+        <span><img src="https://cdn.hugeicons.com/icons/paint-board-stroke-rounded.svg" alt="paint-board" width="48"
+                height="48" /></span>
+        <h3>Theme</h3>
+    </a>
 </div>
+<x-dialog-modal>
+    <x-slot name="title">
+        Hola
+    </x-slot>
+    <x-slot name="content">
+        Hola
+    </x-slot>
+    <x-slot name="footer">
+        Hola
+    </x-slot>
+</x-dialog-modal>
