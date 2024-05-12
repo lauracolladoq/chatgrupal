@@ -60,7 +60,7 @@
                 @auth
                     <a href="" class="profile">
                         <div class="profile-picture" id="my-profile-picture">
-                            <img src="{{ Storage::url(auth()->user()->avatar) }}" alt="" />
+                            <img src="{{ Storage::url("users-avatar/".auth()->user()->avatar) }}" alt="" />
                         </div>
                         <div class="profile-handle">
                             <h4>{{ auth()->user()->name }}</h4>
@@ -134,7 +134,7 @@
                     <div class="my-notifications">
                         <div class="notification">
                             <div class="profile-picture">
-                                <img src="Assets/images/img/m1.jpg" alt="">
+                                <img src="" alt="">
                             </div>
                             <div class="notification-body">
                                 <h5>Nombre Usuario</h5>

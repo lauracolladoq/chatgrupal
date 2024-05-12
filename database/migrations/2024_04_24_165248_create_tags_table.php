@@ -14,7 +14,7 @@ return new class extends Migration
         // id, nombre, color
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('nombre')->unique();
             $table->string('color');
             $table->timestamps();
         });
