@@ -27,7 +27,7 @@
   --color-white-light-theme: 100%;
 
   --color-white: hsl(0, 0%, var(--color-white-light-theme));
-  --color-light: hsl(232, 30%, var(--color-light-light-theme));
+  --color-light: hsl(232, 10%, var(--color-light-light-theme));
   --color-gray: hsl(252, 15%, 60%);
   --color-primary: hsl(var(--primary-color-hue) 75%, 60%);
   --color-secondary: hsl(252, 100%, 90%);
@@ -95,7 +95,7 @@ img {
   font-weight: 500;
 }
 
-.text-gry {
+.text-gray {
   color: var(--color-gray);
 }
 
@@ -121,8 +121,9 @@ nav .search-bar {
   border-radius: var(--border-radius);
 }
 
-nav .search-bar input[type="search"] {
+nav .search-bar input {
   background: transparent;
+  border: none;
   width: 30vw;
   margin-left: 1rem;
   font-size: 0.9rem;
@@ -407,10 +408,16 @@ aside .menu-item:last-child {
 }
 
 /* ----- Comentarios ----- */
-.comments {
-  display: none;
+.comments{
+  max-height: 18rem;
+  overflow-y: scroll;
+}
+
+.comments-box, .comments{
   margin-top: 1rem;
 }
+
+
 
 .comment {
   display: flex;
@@ -448,6 +455,7 @@ aside .menu-item:last-child {
 
 .notifications-search-bar {
   display: flex;
+  align-items: center;
   background: var(--color-light);
   border-radius: var(--border-radius);
   padding: var(--card-padding);
@@ -458,6 +466,7 @@ aside .menu-item:last-child {
 
 .notifications-search-bar input {
   background: transparent;
+  border: none;
   font-size: 0.9rem;
   color: var(--color-dark);
 }
@@ -499,7 +508,7 @@ aside .menu-item:last-child {
 
 .profile-feeds {
   display: grid;
-  grid-template-columns: repeat(3, minmax(200px, auto));
+  grid-template-columns: repeat(3, minmax(auto, auto));
   gap: 0.5rem;
 }
 
@@ -890,7 +899,6 @@ max-width: 80%;
 
   aside .menu-item {
     height: 3rem;
-    width: auto;
   }
 
   aside .menu-item span {
@@ -899,7 +907,8 @@ max-width: 80%;
 
   aside .menu-item span img {
     width: 1.5rem;
-    margin-left: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
     position: relative;
   }
 
@@ -918,6 +927,10 @@ max-width: 80%;
     overflow: hidden;
     border-top-right-radius: var(--card-border-radius);
     border-bottom-left-radius: 0px;
+  }
+
+  .profile-feeds {
+    grid-template-columns: repeat(2, minmax(auto, auto));
   }
 }
 
@@ -948,7 +961,7 @@ max-width: 80%;
     display: none;
   }
 
-  nav .search-bar input[type="search"] {
+  nav .search-bar input {
     width: 20vw;
   }
 

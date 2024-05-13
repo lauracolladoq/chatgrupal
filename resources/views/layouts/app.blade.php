@@ -24,7 +24,7 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- Styles -->
     @livewireStyles
 
@@ -41,14 +41,20 @@
             </div>
             <div class="search-bar">
                 <i class="fa fa-search"></i>
-                <input type="search" placeholder="Serch For Creators" />
+                <input placeholder="Search User" />
             </div>
+            @auth
             <div class="add-post">
                 <label for="add-post" class="btn btn-primary">Add Post</label>
                 <div class="profile-picture" id="my-profile-picture">
-                    <img src="" alt="" />
+                    <img src="{{ Storage::url("users-avatar/".auth()->user()->avatar) }}" alt="My Profile Picture" />
                 </div>
             </div>
+            @else
+            <div class="add-post">
+                <label for="add-post" class="btn btn-primary">Login</label>
+            </div>
+            @endauth
         </div>
     </nav>
     <!-- Page Content -->
@@ -60,11 +66,11 @@
                 @auth
                     <a href="" class="profile">
                         <div class="profile-picture" id="my-profile-picture">
-                            <img src="{{ Storage::url("users-avatar/".auth()->user()->avatar) }}" alt="" />
+                            <img src="{{ Storage::url("users-avatar/".auth()->user()->avatar) }}" alt="My Profile Picture" />
                         </div>
                         <div class="profile-handle">
-                            <h4>{{ auth()->user()->name }}</h4>
-                            <p class="text-gry"><span>@</span>{{ auth()->user()->username }}</p>
+                            <h4 class="font-extrabold">{{ auth()->user()->name }}</h4>
+                            <p class="text-gray"><span>@</span>{{ auth()->user()->username }}</p>
                         </div>
                     </a>
                 @endauth
@@ -81,40 +87,41 @@
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')"
                         class="menu-item {{ request()->routeIs('home') ? 'active' : '' }}">
                         <span><img src="https://cdn.hugeicons.com/icons/home-01-stroke-rounded.svg" alt="home-01"
-                                width="48" height="48" />
-                        </span>
-                        <h3>Home</h3>
+                                width="48" height="48" /></span>
+                        <h3 class="font-extrabold">Home</h3>
                     </x-nav-link>
-
+                
                     <x-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')"
                         class="menu-item {{ request()->routeIs('index') ? 'active' : '' }}">
                         <span> <img src="https://cdn.hugeicons.com/icons/user-stroke-rounded.svg" alt="user"
-                                width="48" height="48" />
-                        </span>
-                        <h3>My Profile</h3>
+                                width="48" height="48" /></span>
+                        <h3 class="font-extrabold">My Profile</h3>
+                    </x-nav-link>
+                    
+                    <x-nav-link href="{{ route('explore') }}" :active="request()->routeIs('home')"
+                        class="menu-item {{ request()->routeIs('explore') ? 'active' : '' }}">
+                        <span><img src="https://cdn.hugeicons.com/icons/view-stroke-rounded.svg" alt="view"
+                                width="48" height="48" /></span>
+                        <h3 class="font-extrabold">Explore</h3>
                     </x-nav-link>
 
                     <a href="" class="menu-item">
-                        <span><img src="https://cdn.hugeicons.com/icons/view-stroke-rounded.svg" alt="view"
-                                width="48" height="48" /></span>
-                        <h3>Explore</h3>
-                    </a>
-                    <a href="" class="menu-item">
                         <span><img src="https://cdn.hugeicons.com/icons/notification-01-stroke-rounded.svg"
                                 alt="notification-01" width="48" height="48" /></span>
-                        <h3>Notifications</h3>
+                        <h3 class="font-extrabold">Notifications</h3>
                     </a>
                     <a href="" class="menu-item">
                         <span><img src="https://cdn.hugeicons.com/icons/message-02-stroke-rounded.svg" alt="message-02"
                                 width="48" height="48" /></span>
-                        <h3>Messages</h3>
+                        <h3 class="font-extrabold">Messages</h3>
                     </a>
                     <a href="" class="menu-item">
                         <span><img src="https://cdn.hugeicons.com/icons/paint-board-stroke-rounded.svg"
                                 alt="paint-board" width="48" height="48" /></span>
-                        <h3>Theme</h3>
+                        <h3 class="font-extrabold">Theme</h3>
                     </a>
                 </aside>
+                
                 <!-- ------------------------------------------- Fin Aside ------------------------------------------- -->
             </div>
             <!-- ------------------------------------------- Fin Sección Izquierda ------------------------------------------- -->
@@ -126,24 +133,27 @@
             <!-- ------------------------------------------- Inicio Sección Derecha ------------------------------------------- -->
             <div class="main-right">
                 <div class="notifications">
-                    <h4>Notificactions</h4>
-                    <div class="notifications-search-bar">
-                        <i class="fas fa-search"></i>
-                        <input type="search" placeholder="Search user" id="notifications-search">
+                  <h4 class="font-extrabold">Notificactions</h4>
+                  <div class="notifications-search-bar">
+                    <i class="fas fa-search"></i>
+                    <input
+                      placeholder="Search user"
+                      id="notifications-search"
+                    />
+                  </div>
+                  <div class="my-notifications">
+                    <div class="notification">
+                      <div class="profile-picture">
+                        <img src="" alt="Profile Picture UserId" />
+                      </div>
+                      <div class="notification-body">
+                        <h5 class="font-extrabold text-sm">Nombre Usuario</h5>
+                        <p class="text-gray">follows you.</p>
+                      </div>
                     </div>
-                    <div class="my-notifications">
-                        <div class="notification">
-                            <div class="profile-picture">
-                                <img src="" alt="">
-                            </div>
-                            <div class="notification-body">
-                                <h5>Nombre Usuario</h5>
-                                <p class="text-gry">follows you.</p>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </div>
+              </div>
 
             <!-- ------------------------------------------- Fin Sección Derecha ------------------------------------------- -->
         </div>

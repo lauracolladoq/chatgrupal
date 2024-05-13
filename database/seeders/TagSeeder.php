@@ -14,18 +14,15 @@ class TagSeeder extends Seeder
     public function run(): void
     {
         $tags = [
-            'Animales' => "#FF0000",
-            'Arte' => "#FF6200",
-            'Cine' => "#FFC300",
-            'Comida' => "#BFE100",
-            'Deportes' => "#7FFF00",
-            'Música' => "#55CF7F",
-            'Moda' => "#1E90FF",
-            'Naturaleza' => "#5530D0",
-            'Tecnología' => "#8A2BE2",
-            'Viajes' => "#B75F8D",
-            'Videojuegos' => "#FF1493"
+            'Animales' => "#FFCCCC", // rosa pastel
+            'Arte' => "#FFDAB9", // melocotón pastel
+            'Cine' => "#FFFACD", // amarillo pastel
+            'Deportes' => "#C1FFC1", // verde pastel
+            'Moda' => "#ADD8E6", // azul pastel
+            'Tecnología' => "#E6E6FA", // lavanda pastel
+            'Videojuegos' => "#FFB6C1" // rosa claro pastel
         ];
+        
 
         foreach ($tags as $n => $c) {
             Tag::create([
