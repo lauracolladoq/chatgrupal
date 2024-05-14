@@ -11,7 +11,8 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+        rel="stylesheet">
 
     <!-- CDN SWEETALERT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -21,17 +22,11 @@
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <!-- CDN TailWind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="resources\js\app.js"></script>
-    
-    <!-- Styles -->
-    @livewireStyles
-
-    <link rel="stylesheet" type="text/css" href="resources/css/app.css">
-
-
 
 </head>
 
@@ -47,16 +42,16 @@
                 <input placeholder="Search User" />
             </div>
             @auth
-            <!-- Si está autenticado aparece el boton de Add Post y la foto de perfil -->
-            <div class="add-post">
-                <label for="add-post" class="btn btn-primary">Add Post</label>
-                <div class="profile-picture" id="my-profile-picture">
-                    <img src="{{ Storage::url("users-avatar/".auth()->user()->avatar) }}" alt="My Profile Picture" />
+                <!-- Si está autenticado aparece el boton de Add Post y la foto de perfil -->
+                <div class="add-post">
+                    <label for="add-post" class="btn btn-primary">Add Post</label>
+                    <div class="profile-picture" id="my-profile-picture">
+                        <img src="{{ Storage::url('users-avatar/' . auth()->user()->avatar) }}" alt="My Profile Picture" />
+                    </div>
                 </div>
-            </div>
-            <!-- Si no está autenticado aparece el boton de Login -->
+                <!-- Si no está autenticado aparece el boton de Login -->
             @else
-            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
             @endauth
         </div>
     </nav>
@@ -69,7 +64,8 @@
                 @auth
                     <a href="" class="profile">
                         <div class="profile-picture" id="my-profile-picture">
-                            <img src="{{ Storage::url("users-avatar/".auth()->user()->avatar) }}" alt="My Profile Picture" />
+                            <img src="{{ Storage::url('users-avatar/' . auth()->user()->avatar) }}"
+                                alt="My Profile Picture" />
                         </div>
                         <div class="profile-handle">
                             <h4 class="font-extrabold">{{ auth()->user()->name }}</h4>
@@ -77,14 +73,6 @@
                         </div>
                     </a>
                 @endauth
-                <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}" x-data>
-                    @csrf
-
-                    <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                        {{ __('Log Out') }}
-                    </x-dropdown-link>
-                </form>
                 <!-- ------------------------------------------- Inicio Aside ------------------------------------------- -->
                 <aside>
                     <x-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')"
@@ -93,14 +81,14 @@
                                 width="48" height="48" /></span>
                         <h3 class="font-extrabold">Home</h3>
                     </x-nav-link>
-                
+
                     <x-nav-link href="{{ route('index') }}" :active="request()->routeIs('index')"
                         class="menu-item {{ request()->routeIs('index') ? 'active' : '' }}">
                         <span> <img src="https://cdn.hugeicons.com/icons/user-stroke-rounded.svg" alt="user"
                                 width="48" height="48" /></span>
                         <h3 class="font-extrabold">My Profile</h3>
                     </x-nav-link>
-                    
+
                     <x-nav-link href="{{ route('explore') }}" :active="request()->routeIs('home')"
                         class="menu-item {{ request()->routeIs('explore') ? 'active' : '' }}">
                         <span><img src="https://cdn.hugeicons.com/icons/view-stroke-rounded.svg" alt="view"
@@ -124,7 +112,7 @@
                         <h3 class="font-extrabold">Theme</h3>
                     </a>
                 </aside>
-                
+
                 <!-- ------------------------------------------- Fin Aside ------------------------------------------- -->
             </div>
             <!-- ------------------------------------------- Fin Sección Izquierda ------------------------------------------- -->
@@ -136,27 +124,24 @@
             <!-- ------------------------------------------- Inicio Sección Derecha ------------------------------------------- -->
             <div class="main-right">
                 <div class="notifications">
-                  <h4 class="font-extrabold">Notificactions</h4>
-                  <div class="notifications-search-bar">
-                    <i class="fas fa-search"></i>
-                    <input
-                      placeholder="Search user"
-                      id="notifications-search"
-                    />
-                  </div>
-                  <div class="my-notifications">
-                    <div class="notification">
-                      <div class="profile-picture">
-                        <img src="" alt="Profile Picture UserId" />
-                      </div>
-                      <div class="notification-body">
-                        <h5 class="font-extrabold text-sm">Nombre Usuario</h5>
-                        <p class="text-gray">follows you.</p>
-                      </div>
+                    <h4 class="font-extrabold">Notificactions</h4>
+                    <div class="notifications-search-bar">
+                        <i class="fas fa-search"></i>
+                        <input placeholder="Search user" id="notifications-search" />
                     </div>
-                  </div>
+                    <div class="my-notifications">
+                        <div class="notification">
+                            <div class="profile-picture">
+                                <img src="" alt="Profile Picture UserId" />
+                            </div>
+                            <div class="notification-body">
+                                <h5 class="font-extrabold text-sm">Nombre Usuario</h5>
+                                <p class="text-gray">follows you.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
+            </div>
 
             <!-- ------------------------------------------- Fin Sección Derecha ------------------------------------------- -->
         </div>
