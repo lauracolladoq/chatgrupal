@@ -22,11 +22,18 @@
                             <img src="{{ Storage::url($post->imagen) }}" alt="" />
                         </div>
                         <div class="action-button">
-                            <div class="interaction-button">
-                                <span><i class="fa-regular fa-heart"></i></span>
-                                <span><i class="fa-regular fa-comment-dots"></i></span>
-                                <span><i class="fa-solid fa-link"></i></span>
-                            </div>
+                            <button wire:click="like({{ $post->id }})">
+                                <i @class([
+                                    'fa-regular fa-heart',
+                                    'fa-solid fa-heart liked' => in_array(
+                                        $post->id,
+                                        $misLikes->pluck('id')->toArray()),
+                                ])></i>
+                            </button>
+                            <button id="toggleComments-{{ $post->id }}">
+                                <i class="fa-regular fa-comment-dots"></i>
+                            </button>
+                            <span><i class="fa-solid fa-link"></i></span>
                         </div>
 
                         <div class="liked-by">
@@ -43,7 +50,7 @@
 
                         <div class="caption">
                             <p>
-                                <span class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->contenido }} 
+                                <span class="pr-1 font-bold">{{ $post->user->name }}</span>{{ $post->contenido }}
                             </p>
                             <div class="tags pt-2 flex flex-wrap gap-2">
                                 @foreach ($post->tags as $tag)
@@ -52,7 +59,29 @@
                                 @endforeach
                             </div>
                         </div>
-                        <div class="comments text-gray">View all comments</div>
+
+                        <div id="comments-{{ $post->id }}" class="comments" style="display: none;">
+                            @if (count($post->comments))
+                                @foreach ($post->comments as $comment)
+                                    <div class="comment">
+                                        <div class="profile-picture">
+                                            <img src="{{ Storage::url('users-avatar/' . $comment->user->avatar) }}"
+                                                alt="" />
+                                        </div>
+                                        <div class="comment-body">
+                                            <p class="font-extrabold">{{ $comment->user->username }}</p>
+                                            <p>
+                                                {{ $comment->contenido }}
+                                            </p>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>No comments yet</p>
+                            @endif
+
+                        </div>
+
                     </div>
                 @endforeach
             </div>

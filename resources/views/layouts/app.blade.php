@@ -8,11 +8,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
 
     <!-- CDN SWEETALERT -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -25,10 +24,14 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="resources\js\app.js"></script>
+    
     <!-- Styles -->
     @livewireStyles
 
     <link rel="stylesheet" type="text/css" href="resources/css/app.css">
+
+
 
 </head>
 
@@ -44,16 +47,16 @@
                 <input placeholder="Search User" />
             </div>
             @auth
+            <!-- Si está autenticado aparece el boton de Add Post y la foto de perfil -->
             <div class="add-post">
                 <label for="add-post" class="btn btn-primary">Add Post</label>
                 <div class="profile-picture" id="my-profile-picture">
                     <img src="{{ Storage::url("users-avatar/".auth()->user()->avatar) }}" alt="My Profile Picture" />
                 </div>
             </div>
+            <!-- Si no está autenticado aparece el boton de Login -->
             @else
-            <div class="add-post">
-                <label for="add-post" class="btn btn-primary">Login</label>
-            </div>
+            <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
             @endauth
         </div>
     </nav>

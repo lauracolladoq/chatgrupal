@@ -11,18 +11,23 @@ class Home extends Component
 {
     public function render()
     {
-        //$posts = Post::select('user_id', 'imagen', 'contenido')->get();
         $posts = Post::select('id', 'user_id', 'imagen', 'contenido', 'created_at')
-        ->orderBy('id')
-        ->with('user', 'tags') 
-        ->take(5)
-        ->get();
-    
-        
+            ->orderBy('id')
+            ->with('user', 'tags', 'comments')
+            ->take(5)
+            ->get();
+
+
         $misLikes = Post::whereHas('usersLikes', function ($q) {
             $q->where('user_id', auth()->user()->id);
         })->get();
+
         return view('livewire.home', compact('posts', 'misLikes'));
-        
+    }
+
+    public function like(Post $post)
+    {
+        //toogle para agregar o quitar like
+        $post->usersLikes()->toggle(auth()->user()->id);
     }
 }

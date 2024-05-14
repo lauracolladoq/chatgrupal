@@ -6,6 +6,7 @@
     display: none;
 }
 
+
 /* --------------- Reseteo de propiedades --------------- */
 *,
 *::before,
@@ -46,7 +47,7 @@
 
 /* --------------- Estilos generales --------------- */
 body {
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Nunito", sans-serif;
   color: var(--color-dark);
   background: var(--color-light);
 }
@@ -336,10 +337,8 @@ aside .menu-item:last-child {
 
 .feed .action-button {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  gap: 0.5rem;
   font-size: 1.4rem;
-  margin: 0.6rem;
 }
 
 .hars-tag {
@@ -349,6 +348,7 @@ aside .menu-item:last-child {
 /* ----- Liked By ----- */
 .liked-by {
   display: flex;
+  align-items: center;
 }
 
 .liked-by span {
@@ -366,7 +366,7 @@ aside .menu-item:last-child {
 }
 
 .liked-by p {
-  margin-left: 0.5rem;
+  margin-left: 0.3rem;
 }
 
 /* ----- Menú Edición ----- */
@@ -409,26 +409,20 @@ aside .menu-item:last-child {
 
 /* ----- Comentarios ----- */
 .comments{
-  max-height: 18rem;
-  overflow-y: scroll;
-}
-
-.comments-box, .comments{
+  max-height: 15rem;
+  overflow-y: auto;
   margin-top: 1rem;
 }
-
-
 
 .comment {
   display: flex;
   margin-top: 1rem;
   gap: 1rem;
-  margin-bottom: 1rem;
   align-items: start;
 }
 
-.comment:last-child {
-  margin-bottom: 0;
+.comment .profile-picture {
+  width: 2rem;
 }
 
 /* --------------- Fin Main Central --------------- */
