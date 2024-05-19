@@ -41,9 +41,9 @@ class DatabaseSeeder extends Seeder
 
         /*
         foreach ($users as $item) {
-            $item->following()->attach($this->followUsers());
-        }
-        */
+            $following = $this->followUsers();
+            $item->following()->attach($following);
+        } */
 
         $this->call(TagSeeder::class);
 
@@ -54,7 +54,7 @@ class DatabaseSeeder extends Seeder
         Comment::factory(30)->create();
     }
 
-    /*
+    
     private function followUsers(): array
     {
 
@@ -72,5 +72,5 @@ class DatabaseSeeder extends Seeder
 
         return $following;
     }
-    */
+    
 }

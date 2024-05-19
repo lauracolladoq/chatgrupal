@@ -56,19 +56,19 @@ class User extends Authenticatable implements FilamentUser
         return $this->belongsToMany(User::class);
     }
 
-    /*
+    
     //Relación N:M con User porque un user puede ser seguido a otros users
     public function followers()
     {
-        return $this->belongsToMany(User::class, 'followers', 'following_id', 'follower_id');
+        return $this->belongsToMany(User::class);
     }
 
     //Relación N:M con User porque un user seguir a otros users
     public function following()
     {
-        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'following_id');
+        return $this->belongsToMany(User::class);
     }
-    */
+    
     
     //Obtención con los id de los post a los que el usuario le ha dado like
     public function getPostsLikesId()

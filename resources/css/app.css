@@ -792,7 +792,6 @@ max-width: 80%;
   background: hsl(317, 75%, 60%); 
 }
 
-
 /* --- Theme Modificar Background --- */
 .choose-bg {
   display: flex;
@@ -929,7 +928,7 @@ max-width: 80%;
 }
 
 /* Max width (1023px) - Pantalla de tablet */
-@media (min-width: 768px) and (max-width: 1200px) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .container {
     width: 90%;
   }

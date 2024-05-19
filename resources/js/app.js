@@ -8,3 +8,4 @@ document.querySelectorAll('[id^="toggleComments-"]').forEach(function (toggleBut
         commentsDiv.style.display = commentsDiv.style.display === 'none' ? 'block' : 'none';
     });
 });
+

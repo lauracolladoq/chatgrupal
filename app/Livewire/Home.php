@@ -3,18 +3,19 @@
 namespace App\Livewire;
 
 use App\Models\Post;
-use App\Models\Tag;
-use App\Models\User;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class Home extends Component
 {
+    
+    //Escucho el evento para actualizar la lista de posts
+    #[On('eventoPostCreado')]
     public function render()
     {
         $posts = Post::select('id', 'user_id', 'imagen', 'contenido', 'created_at')
             ->orderBy('id')
             ->with('user', 'tags', 'comments')
-            ->take(5)
             ->get();
 
 

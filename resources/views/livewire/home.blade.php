@@ -3,6 +3,10 @@
         <div class="main-middle">
             <!-- ------------------------------------------- Inicio Feed Aria ------------------------------------------- -->
             <div class="feeds">
+                <div>
+                    @livewire('new-post')
+                </div>
+
                 @foreach ($posts as $post)
                     <div class="feed">
                         <div class="feed-top">
@@ -36,17 +40,30 @@
                             <span><i class="fa-solid fa-link"></i></span>
                         </div>
 
-                        <div class="liked-by">
-                            <span><img
-                                    src="{{ Storage::url('users-avatar/' . $post->usersLikes()->inRandomOrder()->value('avatar')) }}"
-                                    alt="" /></span>
-                            <span><img
-                                    src="{{ Storage::url('users-avatar/' . $post->usersLikes()->inRandomOrder()->value('avatar')) }}"
-                                    alt="" /></span>
-                            <p>Liked By <b>{{ $post->usersLikes()->inRandomOrder()->value('name') }} </b> and
-                                <b>{{ $post->usersLikes->count() - 1 }}</b> others
-                            </p>
-                        </div>
+                        @if ($post->usersLikes->count() == 0)
+                            <p>0 Likes</p>
+                            <!-- Si solo tiene un like, aparece que es likeado por esa persona y solo aparece su foto -->
+                        @elseif ($post->usersLikes->count() == 1)
+                            <div class="liked-by">
+                                <span><img
+                                        src="{{ Storage::url('users-avatar/' . $post->usersLikes()->inRandomOrder()->value('avatar')) }}"
+                                        alt="" /></span>
+                                <p>Liked By <b>{{ $post->usersLikes()->inRandomOrder()->value('name') }}</b></p>
+                            </div>
+                        @else
+                            <!-- Si tiene más de un like, aparece que es likeado por dos personas random y cuantas personas más -->
+                            <div class="liked-by">
+                                <span><img
+                                        src="{{ Storage::url('users-avatar/' . $post->usersLikes()->inRandomOrder()->value('avatar')) }}"
+                                        alt="" /></span>
+                                <span><img
+                                        src="{{ Storage::url('users-avatar/' . $post->usersLikes()->inRandomOrder()->value('avatar')) }}"
+                                        alt="" /></span>
+                                <p>Liked By <b>{{ $post->usersLikes()->inRandomOrder()->value('name') }}</b> and
+                                    <b>{{ $post->usersLikes->count() - 1 }}</b> others
+                                </p>
+                            </div>
+                        @endif
 
                         <div class="caption">
                             <p>
