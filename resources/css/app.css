@@ -425,6 +425,18 @@ aside .menu-item:last-child {
   width: 2rem;
 }
 
+.add-comment {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 1rem;
+  gap: 1rem;
+}
+
+.add-comment input{
+  width: 100%;
+  border: none;
+}
+
 /* --------------- Fin Main Central --------------- */
 
 /* --------------- Inicio Main Izquierda --------------- */
@@ -596,38 +608,6 @@ aside .menu-item:last-child {
 }
 
 /* ----- Add Post ----- */
-.add-post-popup {
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-}
-
-.row {
-  display: flex;
-  gap: 1rem;
-  width: 100%;
-}
-
-.column-left, .column-right{
-  width: 100%;
-}
-
-.column-left{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.column-left .row, .column-right .row{
-  flex-direction: column;
-  
-}
-
-.add-post-popup label{
-  font-weight: bold;
-}
-
 .add-post-popup textarea {
   background: var(--color-light);
   padding: var(--card-padding);
@@ -635,61 +615,6 @@ aside .menu-item:last-child {
   height: 15rem;
   resize: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.add-post-popup textarea:focus {
-  border: 1px solid var(--color-primary);
-}
-
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.row-tags{
-display: flex;
-flex-direction: column;
-gap: 1rem;
-max-width: 80%;
-
-}
-
-.tag {
-  display: flex;
-  gap: 1rem;
-}
-
-.tag input[type="checkbox"] {
-  display: none; 
-}
-
-.tag label {
-  font-weight: 500;
-  font-size: small;
-  padding: var(--btn-padding);
-  border: 1px solid #ccc; /* Borde gris */
-  border-radius: var(--border-radius);
-  cursor: pointer;
-}
-
-/* Estilo para el label cuando se hace hover 
-.tag label:hover {
-  border-color: aqua; 
-}
-*/
-
-/* Estilo para el label cuando el checkbox está seleccionado */
-.tag input[type="checkbox"]:checked + label {
-  border-color: aqua; /* Cambia el color del borde cuando está seleccionado */
-}
-
-.column-left img{
-  width: 100%;
-  border-radius: var(--card-border-radius);
-  max-height: 15rem;
 }
 
 

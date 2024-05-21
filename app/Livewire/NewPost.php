@@ -4,9 +4,10 @@ namespace App\Livewire;
 
 use App\Models\Post;
 use App\Models\Tag;
+use App\Models\User;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
-use Livewire\Features\SupportFileUploads\WithFileUploads;
+use Livewire\WithFileUploads;
 
 class NewPost extends Component
 {
@@ -16,7 +17,7 @@ class NewPost extends Component
     public $imagen;
 
     #[Validate('nullable', 'string', 'max:255')]
-    public string $contenido;
+    public string $contenido="";
 
     #[Validate('nullable', 'array', 'exists:tags,id')]
     public array $tags = [];
@@ -26,6 +27,8 @@ class NewPost extends Component
     public function store()
     {
 
+      $this->validate();
+        // dd($this->imagen);
         $post = Post::create([
             'imagen' => $this->imagen->store('posts'),
             'contenido' => $this->contenido,
@@ -49,7 +52,8 @@ class NewPost extends Component
 
     public function render()
     {
-        $tags = Tag::all();
-        return view('livewire.new-post', compact('tags'));
+        $misTags = Tag::all();
+        return view('livewire.new-post', compact('misTags'));
     }
+
 }

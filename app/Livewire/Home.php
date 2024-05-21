@@ -8,7 +8,7 @@ use Livewire\Component;
 
 class Home extends Component
 {
-    
+
     //Escucho el evento para actualizar la lista de posts
     #[On('eventoPostCreado')]
     public function render()

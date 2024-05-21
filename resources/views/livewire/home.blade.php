@@ -3,10 +3,6 @@
         <div class="main-middle">
             <!-- ------------------------------------------- Inicio Feed Aria ------------------------------------------- -->
             <div class="feeds">
-                <div>
-                    @livewire('new-post')
-                </div>
-
                 @foreach ($posts as $post)
                     <div class="feed">
                         <div class="feed-top">
@@ -96,9 +92,7 @@
                             @else
                                 <p>No comments yet</p>
                             @endif
-
                         </div>
-
                     </div>
                 @endforeach
             </div>
